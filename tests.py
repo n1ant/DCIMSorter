@@ -16,3 +16,6 @@ def unit_tests():
     assert "2023" in build_path("out", d)
 
     print("Все тесты пройдены!")
+
+if __name__ == "__main__":
+    unit_tests()

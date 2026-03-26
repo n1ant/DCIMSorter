@@ -1,5 +1,3 @@
 @echo off
-
-python main.py
-
-pause
+cd /d "%~dp0"
+start "" pythonw main.py
