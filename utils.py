@@ -2,14 +2,28 @@ import os
 import re
 from datetime import datetime
 
-SUPPORTED_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.mp4', '.mov', '.avi')
+SUPPORTED_EXTENSIONS = (
+    # фото
+    '.jpg', '.jpeg', '.png', '.webp',
+    '.heic', '.heif',
+    '.bmp', '.tiff', '.tif',
+    '.dng', '.raw', '.arw', '.cr2', '.nef',
+
+    # видео
+    '.mp4', '.mov', '.avi',
+    '.mkv', '.wmv',
+    '.flv', '.webm',
+    '.3gp', '.m4v'
+)
 
 
 def is_supported_file(filename):
+    """Проверяет, поддерживается ли файл по расширению"""
     return filename.lower().endswith(SUPPORTED_EXTENSIONS)
 
 
 def extract_date_from_name(filename):
+    """Извлекает дату из имени файла"""
     match = re.search(r'(\d{8})[_-]?(\d{6})', filename)
     if match:
         try:
@@ -20,6 +34,7 @@ def extract_date_from_name(filename):
 
 
 def get_file_date(filepath):
+    """Определяет дату файла (имя -> fallback на mtime)"""
     filename = os.path.basename(filepath)
 
     date = extract_date_from_name(filename)
@@ -31,6 +46,7 @@ def get_file_date(filepath):
 
 
 def build_path(base_dir, date, mode="hierarchical"):
+    """Строит путь назначения"""
     if mode == "hierarchical":
         return os.path.join(base_dir, str(date.year), f"{date.month:02}", f"{date.day:02}")
     else:
@@ -38,6 +54,7 @@ def build_path(base_dir, date, mode="hierarchical"):
 
 
 def make_unique_path(filepath):
+    """Избегает конфликтов имён"""
     base, ext = os.path.splitext(filepath)
     counter = 1
 
