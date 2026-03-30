@@ -3,7 +3,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.13-blue" />
   <img src="https://img.shields.io/badge/GUI-Tkinter-green" />
-  <img src="https://img.shields.io/badge/Platform-Windows-lightgrey" />
+  <img src="https://img.shields.io/badge/Platform-Windows/Linux/macOS-lightgrey" />
   <img src="https://img.shields.io/badge/Status-Stable-success" />
 </p>
 
@@ -58,6 +58,14 @@
 
 Оба файла выполняют **одинаковый запуск программы**.
 
+📌 Примечание:
+Основной способ запуска предназначен для Windows.
+
+На Linux и macOS программу можно запустить вручную:
+
+```bash
+python main.py
+```
 ---
 
 ## 🧪 Тестирование
